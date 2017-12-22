@@ -101,7 +101,7 @@ void ttr_create_thread(struct ttr_tcb *tcb,
 
 	/* stack initialize */
 	aligned_size = STACK_ALIGN(stack_size);
-	p_stacku8 = (uint8_t *)stack_top;
+	p_stacku8 = stack_top;
 	p_stacku8 += aligned_size;
 	p_stack = (uint32_t *)p_stacku8;
 
