@@ -62,6 +62,8 @@
 
 #define STACK_ALIGN(stack_size) (stack_size & ~(STACK_ALIGN_SIZE - 1))
 
+#define STACK_MIN_SIZE 128
+
 extern void ttr_init(void);
 extern void ttr_start(void);
 extern void ttr_create_thread(struct ttr_tcb *tcb,

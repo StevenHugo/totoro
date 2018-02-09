@@ -99,6 +99,13 @@ void ttr_create_thread(struct ttr_tcb *tcb,
 	uint8_t *p_stacku8;
 	uint32_t aligned_size, *p_stack;
 
+	/* security checks */
+	if (!tcb || !stack_top || !ttr_thread)
+		return;
+
+	if (stack_size < STACK_MIN_SIZE)
+		return;
+
 	/* stack initialize */
 	aligned_size = STACK_ALIGN(stack_size);
 	p_stacku8 = stack_top;
