@@ -113,7 +113,7 @@ void ttr_create_thread(struct ttr_tcb *tcb,
 	p_stack = (uint32_t *)p_stacku8;
 
 	/* init registers of thread context */
-	TTR_CONTEXT_INIT(p_stack, ttr_thread, ttr_idle_thread);
+	TTR_CONTEXT_INIT(ttr_thread, ttr_idle_thread);
 
 	/* thread params initialize */
 	tcb->sp = p_stack;

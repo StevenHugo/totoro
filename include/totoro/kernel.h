@@ -37,7 +37,7 @@
 	static uint8_t thread##_stack[TASK_DEFAULT_STACK_SIZE]; \
 	static struct ttr_tcb thread##_tcb;
 
-#define TTR_CONTEXT_INIT(stack, thread, idle) \
+#define TTR_CONTEXT_INIT(thread, idle) \
 	/* \
 	 * Exception frame \
 	 * this frame was stacked automatically. \
