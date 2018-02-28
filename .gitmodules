@@ -1,3 +1,0 @@
-[submodule "ports/cmsis"]
-	path = ports/cmsis
-	url = https://github.com/gilarus/cmsis.git

@@ -47,7 +47,7 @@ static struct tasklist *suspe_q;
 /* node pointer for allocating memory */
 static struct tasklist *node_ptr;
 
-static struct tasklist * migrate(struct ttr_tcb *tcb,
+static struct tasklist *migrate(struct ttr_tcb *tcb,
                         struct tasklist **src,
                         struct tasklist **dst);
 
@@ -63,7 +63,7 @@ void task_initqueue(void)
 }
 
 /* migrate the node from 'src' list to 'dst' list */
-static struct tasklist * migrate(struct ttr_tcb *tcb,
+static struct tasklist *migrate(struct ttr_tcb *tcb,
                         struct tasklist **src,
                         struct tasklist **dst)
 
@@ -162,7 +162,7 @@ ttr_err_t task_enqueue(struct ttr_tcb *tcb)
 	return 	TTR_ERR_OK;
 }
 
-struct ttr_tcb * task_next(void)
+struct ttr_tcb *task_next(void)
 {
 	struct tasklist **tlpp;
 	struct tasklist *low, *high;
@@ -182,33 +182,4 @@ struct ttr_tcb * task_next(void)
 	}
 
 	return !high ? NULL : high->tcb;
-}
-
-void task_dequeue(struct ttr_tcb **tcb)
-{
-	struct tasklist **tlpp;
-	struct tasklist *tlp;
-
-	/* illegal param */
-	if (tcb == NULL)
-		return;
-	else if (*tcb == NULL)
-		return;
-
-	if ((*tcb)->stat == TASK_SUSPENDED)
-		tlpp = &suspe_q;
-	else if ((*tcb)->stat == TASK_READY)
-		tlpp = &ready_q;
-	else
-		return;
-
-	/* queue empty */
-	if (*tlpp == NULL)
-		return;
-
-	tlp = *tlpp;
-	*tcb = tlp->tcb;
-	*tlpp = (*tlpp)->next;
-
-	DELETE_TASK_NODE(tlp);
 }

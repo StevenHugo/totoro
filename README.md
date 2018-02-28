@@ -6,6 +6,7 @@
 
 * round-robin schedule at same priority level
 * simple semaphore implemented
+* easy to port for new SOCs with the support of DTS
 * entry level and well easy learning
 
 ## How to install totoro
@@ -14,11 +15,7 @@
 
 * git clone https://github.com/gilarus/totoro.git
 
-### Clone totoro with submodules
-
-* git clone --recursive https://github.com/gilarus/totoro.git
-
-### Build totoro for your deivces
+### Build totoro for your devices
 
 #### GCC
 
