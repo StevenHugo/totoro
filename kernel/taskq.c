@@ -135,14 +135,12 @@ ttr_err_t task_enqueue(struct ttr_tcb *tcb)
 	struct tasklist **tlpp;
 
 	if (tcb->stat == TASK_SUSPENDED) {
-
 		/* 'tcb' should be migrated to 'suspe_q' list */
 		if (!!migrate(tcb, &ready_q, &suspe_q))
 			return TTR_ERR_OK;
 
 		tlpp = &suspe_q;
 	} else if (tcb->stat == TASK_READY) {
-
 		/* 'tcb' should be migrated to 'ready_q' list */
 		if (!!migrate(tcb, &suspe_q, &ready_q))
 			return TTR_ERR_OK;
@@ -153,7 +151,6 @@ ttr_err_t task_enqueue(struct ttr_tcb *tcb)
 	}
 
 	/* A new node should be created */
-
 	if (TTR_ERR_OK != MALLOC_TASK_NODE(node_ptr, tcb))
 		return TTR_ERR_MEM;
 
@@ -168,17 +165,14 @@ struct ttr_tcb *task_next(void)
 	struct tasklist *low, *high;
 
 	/* check out the most priority advanced task which gets ready */
-
 	low = high = NULL;
 	tlpp = &ready_q;
 	for (; *tlpp != NULL; tlpp = &((*tlpp)->next)) {
-		if ((*tlpp)->tcb->stat == TASK_READY) {
-			low = *tlpp;
-			if (low && high)
-				high = HIGH_PRIO(low, high);
-			else
-				high = low;
-		}
+		if ((*tlpp)->tcb->stat != TASK_READY)
+			continue;
+
+		low = *tlpp;
+		high = (low && high) ? HIGH_PRIO(low, high) : low;
 	}
 
 	return !high ? NULL : high->tcb;
