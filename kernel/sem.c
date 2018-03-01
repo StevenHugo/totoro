@@ -45,6 +45,9 @@ int sem_signal(sem_t *sem)
 /* lock a semaphore */
 int sem_wait(sem_t *sem, uint32_t timeout)
 {
+	if (!sem)
+		return TTR_ERR_PARAM;
+
 	if (!sem->count)
 		ttr_sleep(timeout);
 
