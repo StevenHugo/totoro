@@ -1,7 +1,7 @@
 # version specify
 VERSION := 0
 SUBVERSION := 13
-PATCHVERSION := .5
+PATCHVERSION := .6
 TOTORO_VERSION := $(VERSION).$(SUBVERSION)$(PATCHVERSION)
 
 # compiler variables
