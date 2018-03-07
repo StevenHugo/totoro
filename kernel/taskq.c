@@ -55,11 +55,10 @@ static void insert(struct tasklist *node,
                    struct tasklist **list);
 
 
-void task_initqueue(void)
+void task_init(void)
 {
-	ready_q = suspe_q = node_ptr = NULL;
-
-	return;
+	ready_q = suspe_q = NULL;
+	node_ptr = NULL;
 }
 
 /* migrate the node from 'src' list to 'dst' list */

@@ -55,7 +55,7 @@ struct tasklist {
 	struct tasklist *next;
 };
 
-extern void task_initqueue(void);
+extern void task_init(void);
 extern ttr_err_t task_enqueue(struct ttr_tcb *tcb);
 extern struct ttr_tcb *task_next(void);
 
