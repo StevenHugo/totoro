@@ -38,7 +38,7 @@ static void ttr_idle_thread(void)
 
 void ttr_init(void)
 {
-	task_initqueue();
+	task_init();
 
 	ttr_disable_irq();
 
