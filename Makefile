@@ -1,10 +1,9 @@
-# version specify
 VERSION := 0
 SUBVERSION := 13
 PATCHVERSION := .6
 TOTORO_VERSION := $(VERSION).$(SUBVERSION)$(PATCHVERSION)
+IMAGE = TOTORO-$(TOTORO_VERSION)
 
-# compiler variables
 TOOLS_PREFIX = arm-none-eabi-
 CC      := $(TOOLS_PREFIX)gcc
 AS      := $(TOOLS_PREFIX)as
@@ -12,14 +11,21 @@ LD      := $(TOOLS_PREFIX)ld
 CPP     := $(TOOLS_PREFIX)cpp
 OBJCOPY := $(TOOLS_PREFIX)objcopy
 
-# Kernel source tree
-KERNEL_SOURCE = arch drivers include kernel scripts test
+KERNEL_SOURCE = arch drivers include kernel scripts test ports/README.md
+KERNEL_HEADER = arch include test ports
+KERNEL_OBJS = arch/sys.o \
+	kernel/kernel.o kernel/taskq.o kernel/sem.o \
+	drivers/clock/clock.o drivers/gpio/gpio.o
 
-# phony targets
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+%.o: %.S
+	$(CC) -c -o $@ $<
+
 .PHONY: all clean backup help info tags cscope
 
-all:
-	@echo 'Fix me'
+all: $(OBJS)
+	$(CC) -o ${IMAGE} $(OBJS) $(LDFALGS)
 
 backup:
 	tar -zcvf totoro-$(TOTORO_VERSION).tar.gz $(KERNEL_SOURCE)
@@ -57,4 +63,8 @@ cscope:
 	cscope -b
 
 clean:
+	rm -rf $(OBJS) ${IMAGE}
+
+distclean:
+	@make clean
 	rm -rf cscope.files cscope.out tags

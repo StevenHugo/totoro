@@ -20,7 +20,7 @@ git clone https://github.com/gilarus/totoro.git
 cd ports
 ```
 
-Look [ports/README.md](https://github.com/gilarus/totoro/ports/README.md) for instructions.
+Look [ports/README.md](https://github.com/gilarus/totoro/tree/master/ports/README.md) for instructions.
 
 ## Credits && References
 

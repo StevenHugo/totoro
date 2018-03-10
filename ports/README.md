@@ -1,4 +1,4 @@
-ARM CMSIS is licensed under Apache-2.0.
+ARM CMSIS is licensed under Apache-2.0.  Those files are not the part of TOTORO kernel.
 
 ```bash
 git clone https://github.com/gilarus/CMSIS_5.git
@@ -13,8 +13,6 @@ cd CMSIS_5/Device/xxx/xxx/build/arm
 Hacking totoro with gnu toolchain
 
 ```bash
-cd ../ # cd to root of totoro
-make SOC=xxx # for example, make SOC=stm32f0
+cd CMSIS_5/Device/xxx/xxx/build/gcc
+make
 ```
-
-Those files are not the part of TOTORO kernel.
