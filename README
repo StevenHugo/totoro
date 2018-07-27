@@ -1,0 +1,11 @@
+Totoro - Tiny kernel for ARMs.
+
+Features
+    round-robin schedule at same priority level
+    simple semaphore implemented
+    entry level and well easy learning
+
+Build totoro
+    git clone https://github.com/gilarus/totoro.git
+
+then, See ports/README.md for instructions.
