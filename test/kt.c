@@ -68,7 +68,7 @@ static void ttr_test2_thread(void)
 {
 	test_kt = timer_alloc();
 
-	timer_start(test_kt, 3000, ttr_test_kt_handler);
+	timer_start(test_kt, 3, ttr_test_kt_handler);
 
 	for (;;) {}
 }

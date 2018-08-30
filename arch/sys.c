@@ -19,6 +19,7 @@
  * Contact Author, Gimcuan Hui <gimcuan@gmail.com>
  */
 #include <totoro/kernel.h>
+#include <totoro/timer.h>
 #include <totoro/drivers/clock.h>
 
 void ttr_pend_sv(void);
@@ -35,8 +36,7 @@ void ttr_lowlevel_init(void)
 
 void SysTick_Handler(void)
 {
-	/* Should we do schedule at this time? */
-	ttr_sched();
+	timer_wakeup();
 }
 
 void ttr_pend_sv(void)

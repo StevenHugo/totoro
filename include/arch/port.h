@@ -6,6 +6,8 @@
  # include <cortex-m4/arm/port.h>
  # elif defined(CORTEX_M0)
  # include <cortex-m0/arm/port.h>
+ # elif defined(CORTEX_M3)
+ # include <cortex-m3/arm/port.h>
  # else
  # error "Oh my honey, Please select your target architecture."
  # endif

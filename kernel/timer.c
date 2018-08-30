@@ -91,3 +91,9 @@ void timer_stop(struct timer *t)
 {
 	t->en = 0;	
 }
+
+void timer_wakeup(void)
+{
+	if (!awake)
+		ttr_post(&ktimer_tcb);
+}

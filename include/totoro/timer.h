@@ -34,5 +34,6 @@ extern struct timer *timer_alloc(void);
 extern void timer_start(struct timer *t, uint32_t ms, void (*handler)(void *arg));
 extern void timer_stop(struct timer *t);
 extern int timer_init(void);
+extern void timer_wakeup(void);
 
 #endif
