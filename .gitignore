@@ -4,3 +4,6 @@ tags
 *.out
 *.files
 ports/*
+*.swp
+*.sorted
+*.patch
