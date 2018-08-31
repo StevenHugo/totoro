@@ -3,7 +3,9 @@ Totoro - Tiny kernel for ARMs.
 Features
     round-robin schedule at same priority level
     simple semaphore implemented
+    softirq (high priority periodic timer handler)
     entry level and well easy learning
+    ANSI-C
 
 Build totoro
     git clone https://github.com/gilarus/totoro.git
