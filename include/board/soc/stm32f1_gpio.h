@@ -21,6 +21,11 @@
 #ifndef _STM32F1_GPIO_H_
 #define _STM32F1_GPIO_H_
 
+void inline lowlevel_gpio_init(void)
+{
+
+}
+
 void inline lowlevel_gpio_rst(int id)
 {
 }

@@ -22,6 +22,11 @@
 #include <board/config.h>
 #include <totoro/err.h>
 
+void gpio_init(void)
+{
+	lowlevel_gpio_init();
+}
+
 void gpio_rst(int id)
 {
 	lowlevel_gpio_rst(id);	

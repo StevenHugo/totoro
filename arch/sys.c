@@ -21,6 +21,7 @@
 #include <totoro/kernel.h>
 #include <totoro/timer.h>
 #include <totoro/drivers/clock.h>
+#include <totoro/drivers/gpio.h>
 
 void ttr_pend_sv(void);
 
@@ -28,6 +29,7 @@ void ttr_lowlevel_init(void)
 {
 	/* Bring up hardware */
 	clock_init();
+	gpio_init();
 
 	/* Set Prioritys */
 	NVIC_SetPriority(PendSV_IRQn, 0xff);

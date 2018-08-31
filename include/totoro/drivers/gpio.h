@@ -18,11 +18,11 @@
  *
  * Contact Author, Gimcuan Hui <gimcuan@gmail.com>
  */
-#ifndef _GPIO_H
-#define _GPIO_H
+#ifndef _GPIO_H_
+#define _GPIO_H_
 
+extern void gpio_init(void);
 extern void gpio_rst(int id);
-
 extern void gpio_set(int id);
 
 #endif
