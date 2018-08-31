@@ -1,2 +1,2 @@
-* dts support
-* softirq implementation
+* improve softirq
+* gpio generic driver layer implementation
