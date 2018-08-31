@@ -78,6 +78,8 @@ struct timer *timer_alloc(void)
 
 void timer_start(struct timer *t, uint32_t ms, void (*handler)(void *arg))
 {
+	if (!init)
+		return;
 	t->en = 1;
 	t->v = ms;
 	t->timer_handler = handler;
@@ -89,11 +91,15 @@ void timer_start(struct timer *t, uint32_t ms, void (*handler)(void *arg))
 
 void timer_stop(struct timer *t)
 {
+	if (!init)
+		return;
 	t->en = 0;	
 }
 
 void timer_wakeup(void)
 {
+	if (!init)
+		return;
 	if (!awake)
 		ttr_post(&ktimer_tcb);
 }
