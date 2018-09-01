@@ -1,2 +1,3 @@
 * improve softirq
 * gpio generic driver layer implementation
+* notify events
