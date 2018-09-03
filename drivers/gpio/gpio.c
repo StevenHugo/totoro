@@ -29,7 +29,7 @@ void gpio_init(void)
 
 void gpio_rst(int id)
 {
-	lowlevel_gpio_rst(id);	
+	lowlevel_gpio_rst(id);
 }
 
 void gpio_set(int id)

@@ -25,7 +25,7 @@
 
 void inline lowlevel_clock_init(void)
 {
-	 
+	RCC->APB2ENR |= 0x8; /* Enable GPIOB Clock */
 }
 
 #endif

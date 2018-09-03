@@ -23,15 +23,17 @@
 
 void inline lowlevel_gpio_init(void)
 {
-
+	GPIOB->CRL |= 0x3; /* gpio output push pull */
 }
 
 void inline lowlevel_gpio_rst(int id)
 {
+	GPIOB->ODR &= ~0x1; /* pb.0 output 0 */
 }
 
 void inline lowlevel_gpio_set(int id)
 {
+	GPIOB->ODR |= 0x1; /* pb.0 output 1 */
 }
 
 #endif
