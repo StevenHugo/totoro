@@ -28,6 +28,10 @@
 
 #include <totoro/taskq.h>
 
+extern struct ttr_tcb *ttr_running_task;
+
+#define TTR_TASK_CUR ttr_running_task
+
 /* system ticks in millsecond */
 #define TTR_SYS_TICK 10
 

@@ -20,6 +20,7 @@
  */
 #include <totoro/kernel.h>
 #include <totoro/timer.h>
+#include <totoro/event.h>
 
 extern void ttr_pend_sv(void);
 
@@ -40,6 +41,7 @@ static void ttr_idle_thread(void)
 void ttr_init(void)
 {
 	task_init();
+	event_init();
 
 	ttr_disable_irq();
 
