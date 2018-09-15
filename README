@@ -6,6 +6,7 @@ Features
     softirq (high priority periodic timer handler)
     entry level and well easy learning
     ANSI-C
+    event model programming
 
 Build totoro
     git clone https://github.com/gilarus/totoro.git
