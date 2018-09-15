@@ -30,11 +30,8 @@ DECLARE_TCB(test1);
 /* test thread 2 */
 DECLARE_TCB(test2);
 
-static struct timer *test_evt;
-
 static void ttr_test1_thread(void);
 static void ttr_test2_thread(void);
-static void ttr_test_kt_handler(void *arg);
 
 void ttr_test_sched(void)
 {
@@ -42,7 +39,7 @@ void ttr_test_sched(void)
 
 	/* create thread1 */
 	ttr_create_thread(&test1_tcb,
-	                  TASK_DEFAULT_PRIORITY,
+	                  TASK_DEFAULT_PRIORITY + 1,
 	                  TASK_DEFAULT_STACK_SIZE,
 	                  &test1_stack[0],
 	                  ttr_test1_thread);
@@ -58,26 +55,21 @@ void ttr_test_sched(void)
 
 static void ttr_test1_thread(void)
 {
-	for (;;)
+	for (;;) {
 		gpio_rst(0);
-}
-
-static void ttr_test_kt_handler(void *arg)
-{
-	gpio_set(0);
-	event_notify(&test2_tcb, TEST_EVT_ID);
+		event_notify(&test2_tcb, TEST_EVT_ID);
+		ttr_sleep(~0);
+	}
 }
 
 static void ttr_test2_thread(void)
 {
 	int events;
 
-	test_evt = timer_alloc();
-	timer_start(test_evt, 3, ttr_test_kt_handler);
 	for (;;) {
 		event_wait(TEST_EVT_ID, &events);
-		if (events & TEST_EVT_ID) {
-		}
+		if (events & TEST_EVT_ID)
+			gpio_set(0);
 	}
 }
 

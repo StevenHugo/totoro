@@ -105,7 +105,7 @@ int event_wait(int events_wait, int *events_happens)
 			}
 		}
 	}
-	*events_happens = evts[i].events;
+	*events_happens = evts[i].events; /* err!!! HardFault! */
 	return ret;
 }
 
